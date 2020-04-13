@@ -29,22 +29,30 @@ function viewCart() {
     for (let i=0; i<(cart.length-1); i+=1) {
       inCart += `${cart[i].itemName} at $${cart[i].itemPrice}, `
     }
-    var lastItem= `and ${cart[-1].itemName} at $${cart[-1].itemPrice}`
+    var lastItem= `and ${cart[cart.length - 1].itemName} at $${cart[cart.length - 1].itemPrice}`
     var showCart= 'In your cart, you have ' + inCart + lastItem + '.'
-
   }
   return showCart
 }
 
 
 function total() {
-  // write your code here
+  var sum = 0
+   for (let i=0; i<(cart.length); i+=1) {
+     sum += cart[i].itemPrice
+   }
+   return sum
 }
 
 function removeFromCart(item) {
-  // write your code here
+  for (let i=0; i<(cart.length); i+=1) {
+    if (cart[i].itemName === item) {
+      cart.splice(i,1)
+      return cart
+    } else {
+      return 'That item is not in your cart.'
+    }
 }
 
 function placeOrder(cardNumber) {
-  // write your code here
 }
